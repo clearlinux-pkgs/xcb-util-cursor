@@ -1,5 +1,2 @@
+libX11.so.6
 libc.so.6
-libxcb-image.so.0
-libxcb-render-util.so.0
-libxcb-render.so.0
-libxcb.so.1
