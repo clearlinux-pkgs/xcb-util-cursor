@@ -4,7 +4,7 @@
 #
 Name     : xcb-util-cursor
 Version  : 0.1.3
-Release  : 6
+Release  : 7
 URL      : https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
 Source0  : https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
 Summary  : XCB cursor library
