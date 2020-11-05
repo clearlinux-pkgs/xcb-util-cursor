@@ -4,10 +4,10 @@
 #
 Name     : xcb-util-cursor
 Version  : 0.1.3
-Release  : 7
+Release  : 8
 URL      : https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
 Source0  : https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
-Summary  : XCB cursor library
+Summary  : XCB cursor utility library
 Group    : Development/Tools
 License  : MIT
 Requires: xcb-util-cursor-lib = %{version}-%{release}
@@ -58,35 +58,37 @@ license components for the xcb-util-cursor package.
 
 %prep
 %setup -q -n xcb-util-cursor-0.1.3
+cd %{_builddir}/xcb-util-cursor-0.1.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557102980
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604599770
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1557102980
+export SOURCE_DATE_EPOCH=1604599770
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xcb-util-cursor
-cp COPYING %{buildroot}/usr/share/package-licenses/xcb-util-cursor/COPYING
+cp %{_builddir}/xcb-util-cursor-0.1.3/COPYING %{buildroot}/usr/share/package-licenses/xcb-util-cursor/4f5fe1d01f48c63ff77cb43066137d8140f902aa
 %make_install
 
 %files
@@ -105,4 +107,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/xcb-util-cursor/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/xcb-util-cursor/COPYING
+/usr/share/package-licenses/xcb-util-cursor/4f5fe1d01f48c63ff77cb43066137d8140f902aa
